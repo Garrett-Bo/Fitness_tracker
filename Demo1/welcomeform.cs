@@ -6,21 +6,33 @@ namespace Demo1
 {
     public partial class welcomeform : Form
     {
-        // connection string must be inside the class
         private static string conn = "server=localhost;user=root;password=root;database=fitness_db;";
         public static string ConnectionString => conn;
+        private WelcomeLogic _logic;
 
         public welcomeform()
         {
             InitializeComponent();
+            _logic = new WelcomeLogic(conn);
         }
 
         private void btnconnect_Click(object sender, EventArgs e)
         {
-            MySqlConnection con = new MySqlConnection(conn);
-            con.Open();
-            MessageBox.Show("Connected Successfully!");
-            con.Close();
+            try
+            {
+                if (_logic.TestConnection())
+                {
+                    MessageBox.Show("Connected Successfully!");
+                }
+                else
+                {
+                    MessageBox.Show("Connection failed.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

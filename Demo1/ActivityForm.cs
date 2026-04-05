@@ -8,14 +8,18 @@ namespace Demo1
     {
         private string _username;
         private int _userId = -1;
+        private ActivityLogic _logic;
+        private System.Windows.Forms.Label lblResult = new System.Windows.Forms.Label();
 
         public ActivityForm(string username)
         {
             InitializeComponent();
             _username = username;
+            _logic = new ActivityLogic(welcomeform.ConnectionString);
             this.Load += ActivityForm_Load;
             cmbActivityType.SelectedIndexChanged += cmbActivityType_SelectedIndexChanged;
             btnSaveActivity.Click += btnSaveActivity_Click;
+            btnClose.Click += btnClose_Click;
         }
 
         private void ActivityForm_Load(object sender, EventArgs e)
@@ -23,23 +27,12 @@ namespace Demo1
             cmbActivityType.Items.AddRange(new object[] { "Walking", "Running", "Swimming", "Cycling", "Gym", "Jump Rope" });
             cmbActivityType.SelectedIndex = 0;
             UpdateMetricLabels();
-            // Fetch user_id
-            string connectionString = welcomeform.ConnectionString;
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                var userId = _logic.GetUserId(_username);
+                if (userId != null)
                 {
-                    conn.Open();
-                    string getUserIdQuery = "SELECT id FROM users WHERE name = @username";
-                    using (MySqlCommand cmd = new MySqlCommand(getUserIdQuery, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@username", _username);
-                        object result = cmd.ExecuteScalar();
-                        if (result != null)
-                        {
-                            _userId = Convert.ToInt32(result);
-                        }
-                    }
+                    _userId = userId.Value;
                 }
             }
             catch { /* ignore for now */ }
@@ -95,70 +88,25 @@ namespace Demo1
 
         private void btnSaveActivity_Click(object sender, EventArgs e)
         {
-            // 1. Validate all inputs
             if (cmbActivityType.SelectedIndex < 0)
+                return;
+            string activityType = cmbActivityType.SelectedItem.ToString();
+            float metric1, metric2, metric3;
+            if (!float.TryParse(txtMetric1.Text, out metric1) ||
+                !float.TryParse(txtMetric2.Text, out metric2) ||
+                !float.TryParse(txtMetric3.Text, out metric3))
             {
-                MessageBox.Show("Please select an activity type.");
+                lblResult.Text = "Please enter valid numbers for all metrics.";
                 return;
             }
-            if (!float.TryParse(txtMetric1.Text, out float metric1) ||
-                !float.TryParse(txtMetric2.Text, out float metric2) ||
-                !float.TryParse(txtMetric3.Text, out float metric3) ||
-                !float.TryParse(txtWeight.Text, out float weight) || weight <= 0)
+            string error;
+            if (_logic.SaveActivity(_userId, activityType, metric1, metric2, metric3, out error))
             {
-                MessageBox.Show("Please enter valid numeric values for all metrics and weight.");
-                return;
+                lblResult.Text = "Activity saved!";
             }
-            // 2. Convert time from minutes to hours
-            float duration_hours = metric2 / 60f;
-            // 3. Assign MET values
-            string activity = cmbActivityType.SelectedItem.ToString();
-            float met = 1f;
-            switch (activity)
+            else
             {
-                case "Walking": met = 3.5f; break;
-                case "Running": met = 10f; break;
-                case "Swimming": met = 8f; break;
-                case "Cycling": met = 7f; break;
-                case "Gym": met = 6f; break;
-                case "Jump Rope": met = 12f; break;
-            }
-            // 4. Calculate calories
-            float calories = met * weight * duration_hours;
-            // 5. Insert into MySQL
-            string connectionString = welcomeform.ConnectionString;
-            try
-            {
-                using (MySqlConnection conn = new MySqlConnection(connectionString))
-                {
-                    conn.Open();
-                    string insertQuery = "INSERT INTO activities (user_id, activity_type, metric1, metric2, metric3, duration_hours, weight_kg, calories) " +
-                        "VALUES (@user_id, @activity_type, @metric1, @metric2, @metric3, @duration_hours, @weight_kg, @calories)";
-                    using (MySqlCommand cmd = new MySqlCommand(insertQuery, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@user_id", _userId);
-                        cmd.Parameters.AddWithValue("@activity_type", activity);
-                        cmd.Parameters.AddWithValue("@metric1", metric1);
-                        cmd.Parameters.AddWithValue("@metric2", metric2);
-                        cmd.Parameters.AddWithValue("@metric3", metric3);
-                        cmd.Parameters.AddWithValue("@duration_hours", duration_hours);
-                        cmd.Parameters.AddWithValue("@weight_kg", weight);
-                        cmd.Parameters.AddWithValue("@calories", calories);
-                        cmd.ExecuteNonQuery();
-                    }
-                }
-                // 6. Show MessageBox
-                MessageBox.Show($"Calories burned: {calories:F2}\n(Formula: MET × weight_kg × duration_hours)\nAinsworth BE et al. 2011 Compendium of Physical Activities.");
-                // 8. Clear inputs
-                txtMetric1.Text = "";
-                txtMetric2.Text = "";
-                txtMetric3.Text = "";
-                txtWeight.Text = "";
-            }
-            catch (Exception ex)
-            {
-                // 7. Handle DB errors
-                MessageBox.Show("Database error: " + ex.Message);
+                lblResult.Text = "Error: " + error;
             }
         }
 

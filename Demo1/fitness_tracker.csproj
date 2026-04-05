@@ -104,26 +104,31 @@
     <Compile Include="ActivityForm.Designer.cs">
       <DependentUpon>ActivityForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ActivityLogic.cs" />
     <Compile Include="Goalsetting.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Goalsetting.Designer.cs">
       <DependentUpon>Goalsetting.cs</DependentUpon>
     </Compile>
+    <Compile Include="GoalsettingLogic.cs" />
     <Compile Include="login.Designer.cs">
       <DependentUpon>login.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoginLogic.cs" />
     <Compile Include="ProgressForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ProgressForm.Designer.cs">
       <DependentUpon>ProgressForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProgressLogic.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="RegisterLogic.cs" />
     <Compile Include="welcomeform.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +146,7 @@
     <Compile Include="welcomeform.Designer.cs">
       <DependentUpon>welcomeform.cs</DependentUpon>
     </Compile>
+    <Compile Include="WelcomeLogic.cs" />
     <EmbeddedResource Include="ActivityForm.resx">
       <DependentUpon>ActivityForm.cs</DependentUpon>
     </EmbeddedResource>
