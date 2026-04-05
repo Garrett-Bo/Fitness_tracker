@@ -26,7 +26,15 @@ namespace Demo1
                         cmd.Parameters.AddWithValue("@name", username);
                         cmd.Parameters.AddWithValue("@password", password);
                         int count = System.Convert.ToInt32(cmd.ExecuteScalar());
-                        return count > 0;
+                        if (count > 0)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            error = "Incorrect username or password.";
+                            return false;
+                        }
                     }
                 }
                 catch (System.Exception ex)

@@ -71,13 +71,19 @@ namespace Demo1
             }
         }
 
+        public List<(DateTime Date, float WeightKg)> GetWeightHistory30Days(int userId)
+        {
+            // Removed - not used in the application
+            return new List<(DateTime, float)>();
+        }
+
         public List<ActivityLogEntry> GetActivities(int userId)
         {
             var activities = new List<ActivityLogEntry>();
             using (var conn = new MySqlConnection(_connectionString))
             {
                 conn.Open();
-                string query = "SELECT activity_id, user_id, activity_type, metric1, metric2, metric3, duration_hours, weight_kg, calories, DATE_FORMAT(NOW(), '%Y-%m-%d') as date FROM activities WHERE user_id = @userid ORDER BY activity_type, date DESC";
+                string query = "SELECT activity_id, user_id, activity_type, metric1, metric2, metric3, duration_hours, weight_kg, calories, created_at FROM activities WHERE user_id = @userid ORDER BY activity_type, created_at DESC";
                 using (var cmd = new MySqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@userid", userId);
@@ -87,16 +93,16 @@ namespace Demo1
                         {
                             activities.Add(new ActivityLogEntry
                             {
-                                ActivityId = reader.GetInt32(0),
-                                UserId = reader.GetInt32(1),
-                                ActivityType = reader.GetString(2),
-                                Metric1 = reader.GetFloat(3),
-                                Metric2 = reader.GetFloat(4),
-                                Metric3 = reader.GetFloat(5),
-                                DurationHours = reader.GetFloat(6),
-                                WeightKg = reader.GetFloat(7),
-                                Calories = reader.GetFloat(8),
-                                Date = DateTime.Now // Placeholder, update to real date if available
+                                ActivityId = reader.IsDBNull(0) ? 0 : reader.GetInt32(0),
+                                UserId = reader.IsDBNull(1) ? 0 : reader.GetInt32(1),
+                                ActivityType = reader.IsDBNull(2) ? string.Empty : reader.GetString(2),
+                                Metric1 = reader.IsDBNull(3) ? 0f : reader.GetFloat(3),
+                                Metric2 = reader.IsDBNull(4) ? 0f : reader.GetFloat(4),
+                                Metric3 = reader.IsDBNull(5) ? 0f : reader.GetFloat(5),
+                                DurationHours = reader.IsDBNull(6) ? 0f : reader.GetFloat(6),
+                                WeightKg = reader.IsDBNull(7) ? 0f : reader.GetFloat(7),
+                                Calories = reader.IsDBNull(8) ? 0f : reader.GetFloat(8),
+                                Date = reader.IsDBNull(9) ? DateTime.MinValue : reader.GetDateTime(9)
                             });
                         }
                     }

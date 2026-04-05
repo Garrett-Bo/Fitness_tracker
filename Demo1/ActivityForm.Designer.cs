@@ -40,6 +40,7 @@ namespace Demo1
         private void InitializeComponent()
         {
             this.pnlHeader = new System.Windows.Forms.Panel();
+            this.btnGoalSetting = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.pnlContent = new System.Windows.Forms.Panel();
@@ -61,6 +62,7 @@ namespace Demo1
             // pnlHeader
             // 
             this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(175)))), ((int)(((byte)(80)))));
+            this.pnlHeader.Controls.Add(this.btnGoalSetting);
             this.pnlHeader.Controls.Add(this.btnClose);
             this.pnlHeader.Controls.Add(this.lblTitle);
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
@@ -68,6 +70,22 @@ namespace Demo1
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.Size = new System.Drawing.Size(700, 90);
             this.pnlHeader.TabIndex = 0;
+            // 
+            // btnGoalSetting
+            // 
+            this.btnGoalSetting.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGoalSetting.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
+            this.btnGoalSetting.FlatAppearance.BorderSize = 0;
+            this.btnGoalSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGoalSetting.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnGoalSetting.ForeColor = System.Drawing.Color.White;
+            this.btnGoalSetting.Location = new System.Drawing.Point(531, 10);
+            this.btnGoalSetting.Name = "btnGoalSetting";
+            this.btnGoalSetting.Size = new System.Drawing.Size(119, 30);
+            this.btnGoalSetting.TabIndex = 11;
+            this.btnGoalSetting.Text = "My Goals";
+            this.btnGoalSetting.UseVisualStyleBackColor = false;
+            this.btnGoalSetting.Click += new System.EventHandler(this.btnGoalSetting_Click);
             // 
             // btnClose
             // 

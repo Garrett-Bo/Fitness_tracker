@@ -10,6 +10,7 @@ namespace Demo1
         private int _userId = -1;
         private ActivityLogic _logic;
         private System.Windows.Forms.Label lblResult = new System.Windows.Forms.Label();
+        private Button btnGoalSetting;
 
         public ActivityForm(string username)
         {
@@ -127,6 +128,13 @@ namespace Demo1
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnGoalSetting_Click(object sender, EventArgs e)
+        {
+            Goalsetting goalForm = new Goalsetting(_username);
+            goalForm.Show();
+            this.Hide();
         }
     }
 }

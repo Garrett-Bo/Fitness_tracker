@@ -69,9 +69,13 @@ namespace Demo1
         {
             string username = inputusername.Text.Trim();
             string password = inputpassword.Text;
+            lblPasswordError.Text = string.Empty;
+            lblPasswordError.Visible = true;
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
                 lblPasswordError.Text = "Username and password required.";
+                lblPasswordError.Visible = true;
+                lblPasswordError.ForeColor = System.Drawing.Color.FromArgb(229, 57, 53);
                 return;
             }
             if (!ValidatePassword(password)) return;
@@ -87,6 +91,8 @@ namespace Demo1
             else
             {
                 lblPasswordError.Text = error;
+                lblPasswordError.Visible = true;
+                lblPasswordError.ForeColor = System.Drawing.Color.FromArgb(229, 57, 53);
             }
         }
         private void btnClose_Click(object sender, EventArgs e)

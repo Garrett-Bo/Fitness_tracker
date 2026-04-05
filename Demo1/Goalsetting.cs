@@ -45,25 +45,67 @@ namespace Demo1
         private void btnSaveGoal_Click(object sender, EventArgs e)
         {
             lblResult.Text = "";
+
+            // Validate user ID
+            if (_userId <= 0)
+            {
+                lblResult.Text = "Error: User not properly loaded. Please log in again.";
+                lblResult.ForeColor = System.Drawing.Color.Red;
+                lblResult.Visible = true;
+                return;
+            }
+
+            // Validate input is not empty
             if (string.IsNullOrWhiteSpace(txtGoalCalories.Text))
             {
                 lblResult.Text = "Please enter your goal calories.";
+                lblResult.ForeColor = System.Drawing.Color.Red;
+                lblResult.Visible = true;
                 return;
             }
+
+            // Parse and validate numeric input
             int goalCalories;
-            if (!int.TryParse(txtGoalCalories.Text, out goalCalories) || goalCalories <= 0)
+            if (!int.TryParse(txtGoalCalories.Text, out goalCalories))
             {
                 lblResult.Text = "Please enter a valid number for calories.";
+                lblResult.ForeColor = System.Drawing.Color.Red;
+                lblResult.Visible = true;
                 return;
             }
-            string error;
-            if (_logic.SaveGoal(_userId, goalCalories, out error))
+
+            // Validate positive number
+            if (goalCalories <= 0)
             {
-                lblResult.Text = "Goal saved!";
+                lblResult.Text = "Goal calories must be greater than 0.";
+                lblResult.ForeColor = System.Drawing.Color.Red;
+                lblResult.Visible = true;
+                return;
+            }
+
+            // Validate reasonable range (50 to 10000 calories)
+            if (goalCalories < 50 || goalCalories > 10000)
+            {
+                lblResult.Text = "Goal should be between 50 and 10000 calories.";
+                lblResult.ForeColor = System.Drawing.Color.Red;
+                lblResult.Visible = true;
+                return;
+            }
+
+            // Save goal
+            GoalResult result = _logic.SaveGoal(_userId, goalCalories);
+
+            if (result.Success)
+            {
+                lblResult.Text = result.Message;
+                lblResult.ForeColor = System.Drawing.Color.Green;
+                lblResult.Visible = true;
             }
             else
             {
-                lblResult.Text = "Error: " + error;
+                lblResult.Text = result.Message;
+                lblResult.ForeColor = System.Drawing.Color.Red;
+                lblResult.Visible = true;
             }
         }
 
@@ -76,12 +118,19 @@ namespace Demo1
         {
             ProgressForm progressForm = new ProgressForm(_username);
             progressForm.Show();
+            this.Hide();
         }
 
         private void btnRecordActivity_Click(object sender, EventArgs e)
         {
             ActivityForm activityForm = new ActivityForm(_username);
             activityForm.Show();
+            this.Hide();
+        }
+
+        private void pnlContent_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

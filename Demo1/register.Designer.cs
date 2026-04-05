@@ -58,7 +58,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(57)))), ((int)(((byte)(53)))));
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -81,7 +81,7 @@
             this.backbtn.LinkColor = System.Drawing.Color.White;
             this.backbtn.Location = new System.Drawing.Point(15, 15);
             this.backbtn.Name = "backbtn";
-            this.backbtn.Size = new System.Drawing.Size(180, 20);
+            this.backbtn.Size = new System.Drawing.Size(164, 20);
             this.backbtn.TabIndex = 8;
             this.backbtn.TabStop = true;
             this.backbtn.Text = "← Go back to Welcome";
@@ -95,7 +95,7 @@
             this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(250, 30);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(300, 45);
+            this.lblTitle.Size = new System.Drawing.Size(312, 46);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "CREATE ACCOUNT";
             // 
@@ -119,52 +119,6 @@
             this.pnlForm.Size = new System.Drawing.Size(800, 450);
             this.pnlForm.TabIndex = 13;
             // 
-            // txtusername
-            // 
-            this.txtusername.AutoSize = true;
-            this.txtusername.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.txtusername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.txtusername.Location = new System.Drawing.Point(150, 60);
-            this.txtusername.Name = "txtusername";
-            this.txtusername.Size = new System.Drawing.Size(115, 25);
-            this.txtusername.TabIndex = 2;
-            this.txtusername.Text = "Username";
-            this.txtusername.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // inputusername
-            // 
-            this.inputusername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.inputusername.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.inputusername.Location = new System.Drawing.Point(150, 95);
-            this.inputusername.Name = "inputusername";
-            this.inputusername.Size = new System.Drawing.Size(500, 32);
-            this.inputusername.TabIndex = 3;
-            this.inputusername.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.inputusername.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // txtpassword
-            // 
-            this.txtpassword.AutoSize = true;
-            this.txtpassword.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.txtpassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.txtpassword.Location = new System.Drawing.Point(150, 150);
-            this.txtpassword.Name = "txtpassword";
-            this.txtpassword.Size = new System.Drawing.Size(107, 25);
-            this.txtpassword.TabIndex = 4;
-            this.txtpassword.Text = "Password";
-            // 
-            // inputpassword
-            // 
-            this.inputpassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.inputpassword.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.inputpassword.Location = new System.Drawing.Point(150, 185);
-            this.inputpassword.Name = "inputpassword";
-            this.inputpassword.Size = new System.Drawing.Size(500, 32);
-            this.inputpassword.TabIndex = 5;
-            this.inputpassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.inputpassword.UseSystemPasswordChar = true;
-            this.inputpassword.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
-            // 
             // lblPasswordError
             // 
             this.lblPasswordError.AutoSize = true;
@@ -175,28 +129,15 @@
             this.lblPasswordError.Size = new System.Drawing.Size(0, 20);
             this.lblPasswordError.TabIndex = 9;
             // 
-            // txtconfirmpassword
+            // lblMessage
             // 
-            this.txtconfirmpassword.AutoSize = true;
-            this.txtconfirmpassword.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.txtconfirmpassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.txtconfirmpassword.Location = new System.Drawing.Point(150, 240);
-            this.txtconfirmpassword.Name = "txtconfirmpassword";
-            this.txtconfirmpassword.Size = new System.Drawing.Size(153, 25);
-            this.txtconfirmpassword.TabIndex = 6;
-            this.txtconfirmpassword.Text = "Confirm Password";
-            // 
-            // inputconfirmpassword
-            // 
-            this.inputconfirmpassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.inputconfirmpassword.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.inputconfirmpassword.Location = new System.Drawing.Point(150, 275);
-            this.inputconfirmpassword.Name = "inputconfirmpassword";
-            this.inputconfirmpassword.Size = new System.Drawing.Size(500, 32);
-            this.inputconfirmpassword.TabIndex = 7;
-            this.inputconfirmpassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.inputconfirmpassword.UseSystemPasswordChar = true;
-            this.inputconfirmpassword.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.lblMessage.AutoSize = true;
+            this.lblMessage.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(57)))), ((int)(((byte)(53)))));
+            this.lblMessage.Location = new System.Drawing.Point(150, 390);
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(0, 23);
+            this.lblMessage.TabIndex = 9;
             // 
             // btnconfirmregister
             // 
@@ -212,39 +153,96 @@
             this.btnconfirmregister.Text = "REGISTER";
             this.btnconfirmregister.UseVisualStyleBackColor = false;
             // 
-            // lblMessage
+            // inputconfirmpassword
             // 
-            this.lblMessage.AutoSize = true;
-            this.lblMessage.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(57)))), ((int)(((byte)(53)))));
-            this.lblMessage.Location = new System.Drawing.Point(150, 390);
-            this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(0, 23);
-            this.lblMessage.TabIndex = 9;
+            this.inputconfirmpassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.inputconfirmpassword.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.inputconfirmpassword.Location = new System.Drawing.Point(150, 275);
+            this.inputconfirmpassword.Name = "inputconfirmpassword";
+            this.inputconfirmpassword.Size = new System.Drawing.Size(500, 32);
+            this.inputconfirmpassword.TabIndex = 7;
+            this.inputconfirmpassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.inputconfirmpassword.UseSystemPasswordChar = true;
+            this.inputconfirmpassword.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            // 
+            // txtconfirmpassword
+            // 
+            this.txtconfirmpassword.AutoSize = true;
+            this.txtconfirmpassword.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.txtconfirmpassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtconfirmpassword.Location = new System.Drawing.Point(150, 240);
+            this.txtconfirmpassword.Name = "txtconfirmpassword";
+            this.txtconfirmpassword.Size = new System.Drawing.Size(175, 25);
+            this.txtconfirmpassword.TabIndex = 6;
+            this.txtconfirmpassword.Text = "Confirm Password";
+            // 
+            // inputpassword
+            // 
+            this.inputpassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.inputpassword.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.inputpassword.Location = new System.Drawing.Point(150, 185);
+            this.inputpassword.Name = "inputpassword";
+            this.inputpassword.Size = new System.Drawing.Size(500, 32);
+            this.inputpassword.TabIndex = 5;
+            this.inputpassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.inputpassword.UseSystemPasswordChar = true;
+            this.inputpassword.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
+            // txtpassword
+            // 
+            this.txtpassword.AutoSize = true;
+            this.txtpassword.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.txtpassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtpassword.Location = new System.Drawing.Point(150, 150);
+            this.txtpassword.Name = "txtpassword";
+            this.txtpassword.Size = new System.Drawing.Size(97, 25);
+            this.txtpassword.TabIndex = 4;
+            this.txtpassword.Text = "Password";
+            // 
+            // inputusername
+            // 
+            this.inputusername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.inputusername.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.inputusername.Location = new System.Drawing.Point(150, 95);
+            this.inputusername.Name = "inputusername";
+            this.inputusername.Size = new System.Drawing.Size(500, 32);
+            this.inputusername.TabIndex = 3;
+            this.inputusername.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.inputusername.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // txtusername
+            // 
+            this.txtusername.AutoSize = true;
+            this.txtusername.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.txtusername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtusername.Location = new System.Drawing.Point(150, 60);
+            this.txtusername.Name = "txtusername";
+            this.txtusername.Size = new System.Drawing.Size(101, 25);
+            this.txtusername.TabIndex = 2;
+            this.txtusername.Text = "Username";
+            this.txtusername.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnShowPassword
             // 
             this.btnShowPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnShowPassword.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnShowPassword.Location = new System.Drawing.Point(650, 140);
+            this.btnShowPassword.Location = new System.Drawing.Point(677, 185);
             this.btnShowPassword.Name = "btnShowPassword";
-            this.btnShowPassword.Size = new System.Drawing.Size(60, 32);
+            this.btnShowPassword.Size = new System.Drawing.Size(80, 32);
             this.btnShowPassword.TabIndex = 9;
             this.btnShowPassword.Text = "Show";
             this.btnShowPassword.UseVisualStyleBackColor = true;
-            this.btnShowPassword.Click += new System.EventHandler(this.btnShowPassword_Click);
             // 
             // btnShowConfirmPassword
             // 
             this.btnShowConfirmPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnShowConfirmPassword.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnShowConfirmPassword.Location = new System.Drawing.Point(650, 220);
+            this.btnShowConfirmPassword.Location = new System.Drawing.Point(677, 275);
             this.btnShowConfirmPassword.Name = "btnShowConfirmPassword";
-            this.btnShowConfirmPassword.Size = new System.Drawing.Size(60, 32);
+            this.btnShowConfirmPassword.Size = new System.Drawing.Size(80, 32);
             this.btnShowConfirmPassword.TabIndex = 10;
             this.btnShowConfirmPassword.Text = "Show";
             this.btnShowConfirmPassword.UseVisualStyleBackColor = true;
-            this.btnShowConfirmPassword.Click += new System.EventHandler(this.btnShowConfirmPassword_Click);
             // 
             // register
             // 
@@ -263,6 +261,7 @@
             this.pnlForm.ResumeLayout(false);
             this.pnlForm.PerformLayout();
             this.ResumeLayout(false);
+
         }
 
         #endregion

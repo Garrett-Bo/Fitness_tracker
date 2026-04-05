@@ -34,6 +34,7 @@ namespace Demo1
             string error;
             if (_logic.ValidateLogin(username, password, out error))
             {
+                lblError.Text = string.Empty;
                 Goalsetting goalForm = new Goalsetting(username);
                 goalForm.Show();
                 this.Hide();
@@ -41,6 +42,8 @@ namespace Demo1
             else
             {
                 lblError.Text = error;
+                lblError.Visible = true;
+                lblError.ForeColor = System.Drawing.Color.FromArgb(229, 57, 53);
             }
         }
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e) { }
@@ -53,6 +56,16 @@ namespace Demo1
         {
             textBox2.UseSystemPasswordChar = !textBox2.UseSystemPasswordChar;
             btnShowPassword.Text = textBox2.UseSystemPasswordChar ? "Show" : "Hide";
+        }
+
+        private void btnShowPassword_MouseDown(object sender, MouseEventArgs e)
+        {
+            textBox2.UseSystemPasswordChar = false;
+        }
+
+        private void btnShowPassword_MouseUp(object sender, MouseEventArgs e)
+        {
+            textBox2.UseSystemPasswordChar = true;
         }
     }
 }

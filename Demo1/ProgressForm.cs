@@ -11,6 +11,7 @@ namespace Demo1
         private string _username;
         private int _userId = -1;
         private ProgressLogic _logic;
+        private Button btnGoalSetting;
 
         public ProgressForm(string username)
         {
@@ -25,6 +26,8 @@ namespace Demo1
 
         private void ProgressForm_Load(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Maximized;
+            this.FormBorderStyle = FormBorderStyle.None;
             LoadProgressData();
             LoadActivitiesLog();
         }
@@ -38,6 +41,13 @@ namespace Demo1
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnGoalSetting_Click(object sender, EventArgs e)
+        {
+            Goalsetting goalForm = new Goalsetting(_username);
+            goalForm.Show();
+            this.Hide();
         }
 
         private void LoadProgressData()
@@ -55,22 +65,48 @@ namespace Demo1
                 lblTotalCalories.Text = totalCalories.ToString("F1");
                 float goalCalories = _logic.GetGoalCalories(_userId);
                 lblGoalCalories.Text = goalCalories.ToString("F1");
-                if (goalCalories > 0 && totalCalories >= goalCalories)
+
+                // Display goal status with motivational messages
+                if (goalCalories <= 0)
                 {
-                    lblResult.Text = "\u2713 Goal Achieved!";
-                    lblResult.ForeColor = System.Drawing.Color.LimeGreen;
+                    // No goal set
+                    lblResult.Text = "📌 No Goal Set\n\nSet a goal to get started!";
+                    lblResult.ForeColor = System.Drawing.Color.FromArgb(156, 39, 176); // Purple
                 }
-                else if (goalCalories > 0)
+                else if (totalCalories >= goalCalories)
                 {
-                    float remaining = goalCalories - totalCalories;
-                    lblResult.Text = remaining > 0 
-                        ? $"In Progress\n\n{remaining:F0} kcal\nto go"
-                        : "\u2713 Goal Achieved!";
-                    lblResult.ForeColor = System.Drawing.Color.White;
+                    // Goal achieved!
+                    float exceeded = totalCalories - goalCalories;
+                    lblResult.Text = $"🎉 Goal Achieved!\n\n✓ You burned {totalCalories:F0} kcal\n\nExtra: {exceeded:F0} kcal";
+                    lblResult.ForeColor = System.Drawing.Color.LimeGreen;
                 }
                 else
                 {
-                    lblResult.Text = "No goal set.";
+                    // In progress - show remaining calories and percentage
+                    float remaining = goalCalories - totalCalories;
+                    float percentage = (totalCalories / goalCalories) * 100;
+
+                    // Motivational message based on progress
+                    string motivation = "";
+                    if (percentage >= 75)
+                    {
+                        motivation = "🔥 Almost there! Keep pushing!";
+                    }
+                    else if (percentage >= 50)
+                    {
+                        motivation = "💪 Halfway done! Keep going!";
+                    }
+                    else if (percentage >= 25)
+                    {
+                        motivation = "🚀 Great start! Try harder!";
+                    }
+                    else
+                    {
+                        motivation = "⚡ Let's go! Keep moving!";
+                    }
+
+                    lblResult.Text = $"⏳ In Progress\n\n{percentage:F0}% Complete\n{remaining:F0} kcal to go\n\n{motivation}";
+                    lblResult.ForeColor = System.Drawing.Color.FromArgb(255, 152, 0); // Orange
                 }
             }
             catch (Exception ex)
@@ -83,50 +119,50 @@ namespace Demo1
         {
             lvActivities.Items.Clear();
             lvActivities.Groups.Clear();
+            lvActivities.Columns.Clear();
+
+            // Add columns
+            lvActivities.Columns.Add("Activity Type", 100);
+            lvActivities.Columns.Add("Date", 120);
+            lvActivities.Columns.Add("Metric1", 70);
+            lvActivities.Columns.Add("Metric2", 70);
+            lvActivities.Columns.Add("Metric3", 70);
+            lvActivities.Columns.Add("Duration (h)", 80);
+            lvActivities.Columns.Add("Weight (kg)", 90);
+            lvActivities.Columns.Add("Calories", 80);
+
             var activities = _logic.GetActivities(_userId);
-            // Group by activity type, then by year, month, day
-            var grouped = activities
-                .GroupBy(a => a.ActivityType)
-                .OrderBy(g => g.Key);
-            foreach (var typeGroup in grouped)
+
+            if (activities.Count == 0)
             {
-                var typeGroupHeader = new ListViewGroup(typeGroup.Key, System.Windows.Forms.HorizontalAlignment.Left);
-                lvActivities.Groups.Add(typeGroupHeader);
-                var byYear = typeGroup.GroupBy(a => a.Date.Year).OrderByDescending(g => g.Key);
-                foreach (var yearGroup in byYear)
-                {
-                    var yearHeader = new ListViewGroup($"{typeGroup.Key} - {yearGroup.Key}", System.Windows.Forms.HorizontalAlignment.Left);
-                    lvActivities.Groups.Add(yearHeader);
-                    var byMonth = yearGroup.GroupBy(a => a.Date.Month).OrderByDescending(g => g.Key);
-                    foreach (var monthGroup in byMonth)
-                    {
-                        var monthHeader = new ListViewGroup($"{typeGroup.Key} - {yearGroup.Key}-{monthGroup.Key:D2}", System.Windows.Forms.HorizontalAlignment.Left);
-                        lvActivities.Groups.Add(monthHeader);
-                        var byDay = monthGroup.GroupBy(a => a.Date.Day).OrderByDescending(g => g.Key);
-                        foreach (var dayGroup in byDay)
-                        {
-                            var dayHeader = new ListViewGroup($"{typeGroup.Key} - {yearGroup.Key}-{monthGroup.Key:D2}-{dayGroup.Key:D2}", System.Windows.Forms.HorizontalAlignment.Left);
-                            lvActivities.Groups.Add(dayHeader);
-                            foreach (var act in dayGroup)
-                            {
-                                var item = new ListViewItem(new[]
-                                {
-                                    act.ActivityType,
-                                    act.Date.ToString("yyyy-MM-dd"),
-                                    act.Metric1.ToString(),
-                                    act.Metric2.ToString(),
-                                    act.Metric3.ToString(),
-                                    act.DurationHours.ToString("F2"),
-                                    act.WeightKg.ToString("F2"),
-                                    act.Calories.ToString("F2")
-                                });
-                                item.Group = dayHeader;
-                                lvActivities.Items.Add(item);
-                            }
-                        }
-                    }
-                }
+                ListViewItem emptyItem = new ListViewItem("No activities recorded");
+                lvActivities.Items.Add(emptyItem);
+                return;
             }
+
+            // Simple list - sort by date descending
+            var sorted = activities.OrderByDescending(a => a.Date);
+
+            foreach (var act in sorted)
+            {
+                var item = new ListViewItem(new[]
+                {
+                    act.ActivityType,
+                    act.Date.ToString("yyyy-MM-dd HH:mm"),
+                    act.Metric1.ToString("F2"),
+                    act.Metric2.ToString("F2"),
+                    act.Metric3.ToString("F2"),
+                    act.DurationHours.ToString("F2"),
+                    act.WeightKg.ToString("F2"),
+                    act.Calories.ToString("F2")
+                });
+                lvActivities.Items.Add(item);
+            }
+        }
+
+        private void pnlCard_Paint(object sender, PaintEventArgs e)
+        {
+            // No custom painting logic required yet.
         }
     }
 }

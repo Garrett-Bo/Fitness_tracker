@@ -32,24 +32,24 @@ namespace Demo1
             this.loginbtn = new System.Windows.Forms.Button();
             this.registerbtn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.lblSubtitle = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.pnlMain = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlHeader.SuspendLayout();
             this.pnlMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnconnect
             // 
             this.btnconnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnconnect.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular);
-            this.btnconnect.Location = new System.Drawing.Point(20, 15);
+            this.btnconnect.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnconnect.Location = new System.Drawing.Point(14, 10);
             this.btnconnect.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnconnect.Name = "btnconnect";
-            this.btnconnect.Size = new System.Drawing.Size(209, 28);
+            this.btnconnect.Size = new System.Drawing.Size(209, 34);
             this.btnconnect.TabIndex = 0;
             this.btnconnect.Text = "Test MySQL Connection";
             this.btnconnect.UseVisualStyleBackColor = true;
@@ -62,7 +62,7 @@ namespace Demo1
             this.loginbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.loginbtn.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.loginbtn.ForeColor = System.Drawing.Color.White;
-            this.loginbtn.Location = new System.Drawing.Point(40, 30);
+            this.loginbtn.Location = new System.Drawing.Point(35, 23);
             this.loginbtn.Name = "loginbtn";
             this.loginbtn.Size = new System.Drawing.Size(320, 50);
             this.loginbtn.TabIndex = 1;
@@ -77,7 +77,7 @@ namespace Demo1
             this.registerbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.registerbtn.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.registerbtn.ForeColor = System.Drawing.Color.White;
-            this.registerbtn.Location = new System.Drawing.Point(40, 90);
+            this.registerbtn.Location = new System.Drawing.Point(35, 83);
             this.registerbtn.Name = "registerbtn";
             this.registerbtn.Size = new System.Drawing.Size(320, 50);
             this.registerbtn.TabIndex = 2;
@@ -91,34 +91,24 @@ namespace Demo1
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(425, 120);
+            this.label2.Location = new System.Drawing.Point(425, 207);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(428, 62);
+            this.label2.Size = new System.Drawing.Size(546, 81);
             this.label2.TabIndex = 4;
             this.label2.Text = "FITNESS TRACKER";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            // this.pictureBox1.Image = global::Demo1.Properties.Resources.logo;
-            this.pictureBox1.Location = new System.Drawing.Point(590, 20);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(98, 86);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
-            // 
             // pnlHeader
             // 
             this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
+            this.pnlHeader.Controls.Add(this.pictureBox1);
+            this.pnlHeader.Controls.Add(this.btnconnect);
             this.pnlHeader.Controls.Add(this.lblSubtitle);
             this.pnlHeader.Controls.Add(this.label2);
-            this.pnlHeader.Controls.Add(this.pictureBox1);
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHeader.Location = new System.Drawing.Point(0, 0);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(1364, 220);
+            this.pnlHeader.Size = new System.Drawing.Size(1364, 394);
             this.pnlHeader.TabIndex = 6;
             // 
             // lblSubtitle
@@ -127,7 +117,7 @@ namespace Demo1
             this.lblSubtitle.AutoSize = true;
             this.lblSubtitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSubtitle.ForeColor = System.Drawing.Color.White;
-            this.lblSubtitle.Location = new System.Drawing.Point(475, 160);
+            this.lblSubtitle.Location = new System.Drawing.Point(475, 331);
             this.lblSubtitle.Name = "lblSubtitle";
             this.lblSubtitle.Size = new System.Drawing.Size(340, 28);
             this.lblSubtitle.TabIndex = 7;
@@ -152,16 +142,28 @@ namespace Demo1
             // 
             // pnlMain
             // 
+            this.pnlMain.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pnlMain.BackColor = System.Drawing.Color.White;
             this.pnlMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlMain.Controls.Add(this.btnconnect);
             this.pnlMain.Controls.Add(this.loginbtn);
             this.pnlMain.Controls.Add(this.registerbtn);
-            this.pnlMain.Location = new System.Drawing.Point(412, 246);
+            this.pnlMain.Location = new System.Drawing.Point(455, 429);
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Padding = new System.Windows.Forms.Padding(20);
             this.pnlMain.Size = new System.Drawing.Size(380, 150);
             this.pnlMain.TabIndex = 11;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox1.Image = global::Demo1.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(598, 85);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(151, 141);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // welcomeform
             // 
@@ -179,10 +181,10 @@ namespace Demo1
             this.Text = "Fitness Tracker - Welcome";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
             this.pnlMain.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -193,11 +195,11 @@ namespace Demo1
         private System.Windows.Forms.Button loginbtn;
         private System.Windows.Forms.Button registerbtn;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel pnlHeader;
         private System.Windows.Forms.Label lblSubtitle;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Panel pnlMain;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

@@ -29,12 +29,12 @@
             this.lblLoggedUser = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
             this.pnlContent = new System.Windows.Forms.Panel();
-            this.lblResult = new System.Windows.Forms.Label();
             this.btnViewProgress = new System.Windows.Forms.Button();
             this.btnRecordActivity = new System.Windows.Forms.Button();
             this.btnSaveGoal = new System.Windows.Forms.Button();
             this.txtGoalCalories = new System.Windows.Forms.TextBox();
             this.lblGoalText = new System.Windows.Forms.Label();
+            this.lblResult = new System.Windows.Forms.Label();
             this.pnlHeader.SuspendLayout();
             this.pnlContent.SuspendLayout();
             this.SuspendLayout();
@@ -104,16 +104,7 @@
             this.pnlContent.Name = "pnlContent";
             this.pnlContent.Size = new System.Drawing.Size(900, 350);
             this.pnlContent.TabIndex = 4;
-            // 
-            // lblResult
-            // 
-            this.lblResult.AutoSize = true;
-            this.lblResult.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblResult.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(57)))), ((int)(((byte)(53)))));
-            this.lblResult.Location = new System.Drawing.Point(180, 200);
-            this.lblResult.Name = "lblResult";
-            this.lblResult.Size = new System.Drawing.Size(0, 23);
-            this.lblResult.TabIndex = 5;
+            this.pnlContent.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlContent_Paint);
             // 
             // btnViewProgress
             // 
@@ -181,6 +172,18 @@
             this.lblGoalText.TabIndex = 1;
             this.lblGoalText.Text = "Goal Calories (kcal):";
             this.lblGoalText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblResult
+            // 
+            this.lblResult.AutoSize = false;
+            this.lblResult.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.lblResult.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(57)))), ((int)(((byte)(53)))));
+            this.lblResult.Location = new System.Drawing.Point(70, 250);
+            this.lblResult.Name = "lblResult";
+            this.lblResult.Size = new System.Drawing.Size(760, 80);
+            this.lblResult.TabIndex = 8;
+            this.lblResult.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblResult.Visible = false;
             // 
             // Goalsetting
             // 
