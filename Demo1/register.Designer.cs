@@ -38,6 +38,8 @@
             this.txtpassword = new System.Windows.Forms.Label();
             this.inputusername = new System.Windows.Forms.TextBox();
             this.txtusername = new System.Windows.Forms.Label();
+            this.btnShowPassword = new System.Windows.Forms.Button();
+            this.btnShowConfirmPassword = new System.Windows.Forms.Button();
             this.pnlHeader.SuspendLayout();
             this.pnlForm.SuspendLayout();
             this.SuspendLayout();
@@ -109,6 +111,8 @@
             this.pnlForm.Controls.Add(this.txtpassword);
             this.pnlForm.Controls.Add(this.inputusername);
             this.pnlForm.Controls.Add(this.txtusername);
+            this.pnlForm.Controls.Add(this.btnShowPassword);
+            this.pnlForm.Controls.Add(this.btnShowConfirmPassword);
             this.pnlForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlForm.Location = new System.Drawing.Point(0, 100);
             this.pnlForm.Name = "pnlForm";
@@ -218,6 +222,30 @@
             this.lblMessage.Size = new System.Drawing.Size(0, 23);
             this.lblMessage.TabIndex = 9;
             // 
+            // btnShowPassword
+            // 
+            this.btnShowPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShowPassword.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnShowPassword.Location = new System.Drawing.Point(650, 140);
+            this.btnShowPassword.Name = "btnShowPassword";
+            this.btnShowPassword.Size = new System.Drawing.Size(60, 32);
+            this.btnShowPassword.TabIndex = 9;
+            this.btnShowPassword.Text = "Show";
+            this.btnShowPassword.UseVisualStyleBackColor = true;
+            this.btnShowPassword.Click += new System.EventHandler(this.btnShowPassword_Click);
+            // 
+            // btnShowConfirmPassword
+            // 
+            this.btnShowConfirmPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShowConfirmPassword.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnShowConfirmPassword.Location = new System.Drawing.Point(650, 220);
+            this.btnShowConfirmPassword.Name = "btnShowConfirmPassword";
+            this.btnShowConfirmPassword.Size = new System.Drawing.Size(60, 32);
+            this.btnShowConfirmPassword.TabIndex = 10;
+            this.btnShowConfirmPassword.Text = "Show";
+            this.btnShowConfirmPassword.UseVisualStyleBackColor = true;
+            this.btnShowConfirmPassword.Click += new System.EventHandler(this.btnShowConfirmPassword_Click);
+            // 
             // register
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -253,5 +281,7 @@
         private System.Windows.Forms.Label lblPasswordError;
         private System.Windows.Forms.Label lblMessage;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button btnShowPassword;
+        private System.Windows.Forms.Button btnShowConfirmPassword;
     }
 }

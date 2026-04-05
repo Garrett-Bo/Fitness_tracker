@@ -36,13 +36,17 @@ namespace Demo1
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.lblSubtitle = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
+            this.pnlMain = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlHeader.SuspendLayout();
+            this.pnlMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnconnect
             // 
-            this.btnconnect.Location = new System.Drawing.Point(16, 15);
+            this.btnconnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnconnect.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular);
+            this.btnconnect.Location = new System.Drawing.Point(20, 15);
             this.btnconnect.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnconnect.Name = "btnconnect";
             this.btnconnect.Size = new System.Drawing.Size(209, 28);
@@ -55,9 +59,10 @@ namespace Demo1
             // 
             this.loginbtn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.loginbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
-            this.loginbtn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.loginbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.loginbtn.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.loginbtn.ForeColor = System.Drawing.Color.White;
-            this.loginbtn.Location = new System.Drawing.Point(480, 330);
+            this.loginbtn.Location = new System.Drawing.Point(40, 30);
             this.loginbtn.Name = "loginbtn";
             this.loginbtn.Size = new System.Drawing.Size(320, 50);
             this.loginbtn.TabIndex = 1;
@@ -69,9 +74,10 @@ namespace Demo1
             // 
             this.registerbtn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.registerbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(175)))), ((int)(((byte)(80)))));
-            this.registerbtn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.registerbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.registerbtn.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.registerbtn.ForeColor = System.Drawing.Color.White;
-            this.registerbtn.Location = new System.Drawing.Point(480, 410);
+            this.registerbtn.Location = new System.Drawing.Point(40, 90);
             this.registerbtn.Name = "registerbtn";
             this.registerbtn.Size = new System.Drawing.Size(320, 50);
             this.registerbtn.TabIndex = 2;
@@ -83,9 +89,9 @@ namespace Demo1
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(447, 166);
+            this.label2.Location = new System.Drawing.Point(425, 120);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(428, 62);
             this.label2.TabIndex = 4;
@@ -96,7 +102,7 @@ namespace Demo1
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             // this.pictureBox1.Image = global::Demo1.Properties.Resources.logo;
-            this.pictureBox1.Location = new System.Drawing.Point(590, 77);
+            this.pictureBox1.Location = new System.Drawing.Point(590, 20);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(98, 86);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -112,7 +118,7 @@ namespace Demo1
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHeader.Location = new System.Drawing.Point(0, 0);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(1364, 324);
+            this.pnlHeader.Size = new System.Drawing.Size(1364, 220);
             this.pnlHeader.TabIndex = 6;
             // 
             // lblSubtitle
@@ -121,7 +127,7 @@ namespace Demo1
             this.lblSubtitle.AutoSize = true;
             this.lblSubtitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSubtitle.ForeColor = System.Drawing.Color.White;
-            this.lblSubtitle.Location = new System.Drawing.Point(475, 228);
+            this.lblSubtitle.Location = new System.Drawing.Point(475, 160);
             this.lblSubtitle.Name = "lblSubtitle";
             this.lblSubtitle.Size = new System.Drawing.Size(340, 28);
             this.lblSubtitle.TabIndex = 7;
@@ -144,16 +150,27 @@ namespace Demo1
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // pnlMain
+            // 
+            this.pnlMain.BackColor = System.Drawing.Color.White;
+            this.pnlMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlMain.Controls.Add(this.btnconnect);
+            this.pnlMain.Controls.Add(this.loginbtn);
+            this.pnlMain.Controls.Add(this.registerbtn);
+            this.pnlMain.Location = new System.Drawing.Point(412, 246);
+            this.pnlMain.Name = "pnlMain";
+            this.pnlMain.Padding = new System.Windows.Forms.Padding(20);
+            this.pnlMain.Size = new System.Drawing.Size(380, 150);
+            this.pnlMain.TabIndex = 11;
+            // 
             // welcomeform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
             this.ClientSize = new System.Drawing.Size(1364, 600);
+            this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.loginbtn);
-            this.Controls.Add(this.registerbtn);
-            this.Controls.Add(this.btnconnect);
             this.Controls.Add(this.pnlHeader);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
@@ -165,6 +182,7 @@ namespace Demo1
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
+            this.pnlMain.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -179,6 +197,7 @@ namespace Demo1
         private System.Windows.Forms.Panel pnlHeader;
         private System.Windows.Forms.Label lblSubtitle;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Panel pnlMain;
     }
 }
 

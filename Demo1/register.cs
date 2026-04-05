@@ -99,5 +99,17 @@ namespace Demo1
             welcomePage.Show();
             this.Close();
         }
+
+        private void btnShowPassword_Click(object sender, EventArgs e)
+        {
+            inputpassword.UseSystemPasswordChar = !inputpassword.UseSystemPasswordChar;
+            btnShowPassword.Text = inputpassword.UseSystemPasswordChar ? "Show" : "Hide";
+        }
+
+        private void btnShowConfirmPassword_Click(object sender, EventArgs e)
+        {
+            inputconfirmpassword.UseSystemPasswordChar = !inputconfirmpassword.UseSystemPasswordChar;
+            btnShowConfirmPassword.Text = inputconfirmpassword.UseSystemPasswordChar ? "Show" : "Hide";
+        }
     }
 }

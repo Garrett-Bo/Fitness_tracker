@@ -48,5 +48,11 @@ namespace Demo1
         {
             this.Close();
         }
+
+        private void btnShowPassword_Click(object sender, EventArgs e)
+        {
+            textBox2.UseSystemPasswordChar = !textBox2.UseSystemPasswordChar;
+            btnShowPassword.Text = textBox2.UseSystemPasswordChar ? "Show" : "Hide";
+        }
     }
 }

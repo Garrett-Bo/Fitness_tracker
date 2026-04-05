@@ -32,6 +32,7 @@ namespace Demo1
             this.pnlCard1 = new System.Windows.Forms.Panel();
             this.lblTotalCalories = new System.Windows.Forms.Label();
             this.lblTotalCaloriesTitle = new System.Windows.Forms.Label();
+            this.lvActivities = new System.Windows.Forms.ListView();
             this.pnlHeader.SuspendLayout();
             this.pnlContent.SuspendLayout();
             this.pnlCard1.SuspendLayout();
@@ -98,6 +99,7 @@ namespace Demo1
             this.pnlContent.Controls.Add(this.pnlCard3);
             this.pnlContent.Controls.Add(this.pnlCard2);
             this.pnlContent.Controls.Add(this.pnlCard1);
+            this.pnlContent.Controls.Add(this.lvActivities);
             this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContent.Location = new System.Drawing.Point(0, 130);
             this.pnlContent.Name = "pnlContent";
@@ -106,19 +108,20 @@ namespace Demo1
             // 
             // pnlCard1
             // 
-            this.pnlCard1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
+            this.pnlCard1.BackColor = System.Drawing.Color.White;
             this.pnlCard1.Controls.Add(this.lblTotalCaloriesTitle);
             this.pnlCard1.Controls.Add(this.lblTotalCalories);
             this.pnlCard1.Location = new System.Drawing.Point(60, 50);
             this.pnlCard1.Name = "pnlCard1";
             this.pnlCard1.Size = new System.Drawing.Size(300, 200);
             this.pnlCard1.TabIndex = 2;
+            this.pnlCard1.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlCard_Paint);
             // 
             // lblTotalCaloriesTitle
             // 
-            this.lblTotalCaloriesTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
+            this.lblTotalCaloriesTitle.BackColor = System.Drawing.Color.White;
             this.lblTotalCaloriesTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.lblTotalCaloriesTitle.ForeColor = System.Drawing.Color.White;
+            this.lblTotalCaloriesTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
             this.lblTotalCaloriesTitle.Location = new System.Drawing.Point(0, 10);
             this.lblTotalCaloriesTitle.Name = "lblTotalCaloriesTitle";
             this.lblTotalCaloriesTitle.Size = new System.Drawing.Size(300, 50);
@@ -128,9 +131,9 @@ namespace Demo1
             // 
             // lblTotalCalories
             // 
-            this.lblTotalCalories.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(180)))));
+            this.lblTotalCalories.BackColor = System.Drawing.Color.White;
             this.lblTotalCalories.Font = new System.Drawing.Font("Segoe UI", 56F, System.Drawing.FontStyle.Bold);
-            this.lblTotalCalories.ForeColor = System.Drawing.Color.White;
+            this.lblTotalCalories.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
             this.lblTotalCalories.Location = new System.Drawing.Point(0, 70);
             this.lblTotalCalories.Name = "lblTotalCalories";
             this.lblTotalCalories.Size = new System.Drawing.Size(300, 130);
@@ -140,19 +143,20 @@ namespace Demo1
             // 
             // pnlCard2
             // 
-            this.pnlCard2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(139)))), ((int)(((byte)(34)))));
+            this.pnlCard2.BackColor = System.Drawing.Color.White;
             this.pnlCard2.Controls.Add(this.lblGoalCaloriesTitle);
             this.pnlCard2.Controls.Add(this.lblGoalCalories);
             this.pnlCard2.Location = new System.Drawing.Point(405, 50);
             this.pnlCard2.Name = "pnlCard2";
             this.pnlCard2.Size = new System.Drawing.Size(300, 200);
             this.pnlCard2.TabIndex = 3;
+            this.pnlCard2.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlCard_Paint);
             // 
             // lblGoalCaloriesTitle
             // 
-            this.lblGoalCaloriesTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(139)))), ((int)(((byte)(34)))));
+            this.lblGoalCaloriesTitle.BackColor = System.Drawing.Color.White;
             this.lblGoalCaloriesTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.lblGoalCaloriesTitle.ForeColor = System.Drawing.Color.White;
+            this.lblGoalCaloriesTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(175)))), ((int)(((byte)(80)))));
             this.lblGoalCaloriesTitle.Location = new System.Drawing.Point(0, 10);
             this.lblGoalCaloriesTitle.Name = "lblGoalCaloriesTitle";
             this.lblGoalCaloriesTitle.Size = new System.Drawing.Size(300, 50);
@@ -162,9 +166,9 @@ namespace Demo1
             // 
             // lblGoalCalories
             // 
-            this.lblGoalCalories.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(139)))), ((int)(((byte)(34)))));
+            this.lblGoalCalories.BackColor = System.Drawing.Color.White;
             this.lblGoalCalories.Font = new System.Drawing.Font("Segoe UI", 56F, System.Drawing.FontStyle.Bold);
-            this.lblGoalCalories.ForeColor = System.Drawing.Color.White;
+            this.lblGoalCalories.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(175)))), ((int)(((byte)(80)))));
             this.lblGoalCalories.Location = new System.Drawing.Point(0, 70);
             this.lblGoalCalories.Name = "lblGoalCalories";
             this.lblGoalCalories.Size = new System.Drawing.Size(300, 130);
@@ -174,19 +178,20 @@ namespace Demo1
             // 
             // pnlCard3
             // 
-            this.pnlCard3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(134)))), ((int)(((byte)(11)))));
+            this.pnlCard3.BackColor = System.Drawing.Color.White;
             this.pnlCard3.Controls.Add(this.lblStatusTitle);
             this.pnlCard3.Controls.Add(this.lblResult);
             this.pnlCard3.Location = new System.Drawing.Point(750, 50);
             this.pnlCard3.Name = "pnlCard3";
             this.pnlCard3.Size = new System.Drawing.Size(300, 200);
             this.pnlCard3.TabIndex = 4;
+            this.pnlCard3.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlCard_Paint);
             // 
             // lblStatusTitle
             // 
-            this.lblStatusTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(134)))), ((int)(((byte)(11)))));
+            this.lblStatusTitle.BackColor = System.Drawing.Color.White;
             this.lblStatusTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.lblStatusTitle.ForeColor = System.Drawing.Color.White;
+            this.lblStatusTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(152)))), ((int)(((byte)(0)))));
             this.lblStatusTitle.Location = new System.Drawing.Point(0, 10);
             this.lblStatusTitle.Name = "lblStatusTitle";
             this.lblStatusTitle.Size = new System.Drawing.Size(300, 50);
@@ -196,9 +201,9 @@ namespace Demo1
             // 
             // lblResult
             // 
-            this.lblResult.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(134)))), ((int)(((byte)(11)))));
+            this.lblResult.BackColor = System.Drawing.Color.White;
             this.lblResult.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
-            this.lblResult.ForeColor = System.Drawing.Color.White;
+            this.lblResult.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(152)))), ((int)(((byte)(0)))));
             this.lblResult.Location = new System.Drawing.Point(10, 70);
             this.lblResult.Name = "lblResult";
             this.lblResult.Size = new System.Drawing.Size(280, 120);
@@ -220,6 +225,29 @@ namespace Demo1
             this.btnRefresh.Text = "Refresh Data";
             this.btnRefresh.UseVisualStyleBackColor = false;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
+            // lvActivities
+            // 
+            this.lvActivities.BackColor = System.Drawing.Color.White;
+            this.lvActivities.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lvActivities.Location = new System.Drawing.Point(60, 370);
+            this.lvActivities.Name = "lvActivities";
+            this.lvActivities.Size = new System.Drawing.Size(990, 200);
+            this.lvActivities.TabIndex = 6;
+            this.lvActivities.UseCompatibleStateImageBehavior = false;
+            this.lvActivities.View = System.Windows.Forms.View.Details;
+            this.lvActivities.FullRowSelect = true;
+            this.lvActivities.GridLines = true;
+            this.lvActivities.HideSelection = false;
+            this.lvActivities.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            new System.Windows.Forms.ColumnHeader() { Text = "Type", Width = 120 },
+            new System.Windows.Forms.ColumnHeader() { Text = "Date", Width = 120 },
+            new System.Windows.Forms.ColumnHeader() { Text = "Metric1", Width = 100 },
+            new System.Windows.Forms.ColumnHeader() { Text = "Metric2", Width = 100 },
+            new System.Windows.Forms.ColumnHeader() { Text = "Metric3", Width = 100 },
+            new System.Windows.Forms.ColumnHeader() { Text = "Duration (h)", Width = 100 },
+            new System.Windows.Forms.ColumnHeader() { Text = "Weight (kg)", Width = 100 },
+            new System.Windows.Forms.ColumnHeader() { Text = "Calories", Width = 100 } });
             // 
             // ProgressForm
             // 
@@ -259,5 +287,6 @@ namespace Demo1
         private System.Windows.Forms.Label lblTotalCalories;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.ListView lvActivities;
     }
 }
