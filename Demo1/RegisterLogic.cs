@@ -28,7 +28,7 @@ namespace Demo1
                         int exists = Convert.ToInt32(cmd.ExecuteScalar());
                         if (exists > 0)
                         {
-                            error = "Username already exists.";
+                            error = $"Username '{username}' already exists.";
                             return false;
                         }
                     }
@@ -41,9 +41,14 @@ namespace Demo1
                     }
                     return true;
                 }
+                catch (MySqlException ex)
+                {
+                    error = $"MySQL error {ex.Number}: {ex.Message}";
+                    return false;
+                }
                 catch (Exception ex)
                 {
-                    error = "Database error: " + ex.Message;
+                    error = $"General error: {ex.Message}";
                     return false;
                 }
             }

@@ -24,7 +24,7 @@ namespace Demo1
             }
         }
 
-        public bool SaveActivity(int userId, string activityType, float metric1, float metric2, float metric3, out string error)
+        public bool SaveActivity(int userId, string activityType, float metric1, float metric2, float metric3, float durationHours, float weightKg, out string error)
         {
             error = null;
             try
@@ -32,7 +32,7 @@ namespace Demo1
                 using (var conn = new MySqlConnection(_connectionString))
                 {
                     conn.Open();
-                    string insert = "INSERT INTO activities (user_id, activity_type, metric1, metric2, metric3, calories) VALUES (@userid, @type, @m1, @m2, @m3, @calories)";
+                    string insert = "INSERT INTO activities (user_id, activity_type, metric1, metric2, metric3, duration_hours, weight_kg, calories) VALUES (@userid, @type, @m1, @m2, @m3, @duration, @weight, @calories)";
                     using (var cmd = new MySqlCommand(insert, conn))
                     {
                         cmd.Parameters.AddWithValue("@userid", userId);
@@ -40,8 +40,10 @@ namespace Demo1
                         cmd.Parameters.AddWithValue("@m1", metric1);
                         cmd.Parameters.AddWithValue("@m2", metric2);
                         cmd.Parameters.AddWithValue("@m3", metric3);
-                        // For demo, calories = metric2 (time) * 5
-                        cmd.Parameters.AddWithValue("@calories", metric2 * 5);
+                        cmd.Parameters.AddWithValue("@duration", durationHours);
+                        cmd.Parameters.AddWithValue("@weight", weightKg);
+                        // For demo, calories = durationHours * weightKg (simple formula)
+                        cmd.Parameters.AddWithValue("@calories", durationHours * weightKg);
                         cmd.ExecuteNonQuery();
                     }
                     return true;

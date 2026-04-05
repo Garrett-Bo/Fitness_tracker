@@ -13,12 +13,10 @@ namespace Demo1
         {
             InitializeComponent();
             _logic = new RegisterLogic(welcomeform.ConnectionString);
+            btnconfirmregister.Click += btnconfirmregister_Click; // Ensure always attached
         }
         private void label1_Click(object sender, EventArgs e) { }
-        private void register_Load(object sender, EventArgs e)
-        {
-            btnconfirmregister.Click += btnconfirmregister_Click;
-        }
+        private void register_Load(object sender, EventArgs e) { }
         private void textBox1_TextChanged(object sender, EventArgs e) { }
         private void textBox2_TextChanged(object sender, EventArgs e) { }
         private void label2_Click(object sender, EventArgs e) { }
@@ -71,12 +69,20 @@ namespace Demo1
         {
             string username = inputusername.Text.Trim();
             string password = inputpassword.Text;
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+            {
+                lblPasswordError.Text = "Username and password required.";
+                return;
+            }
             if (!ValidatePassword(password)) return;
             string error;
-            if (_logic.RegisterUser(username, password, out error))
+            bool result = _logic.RegisterUser(username, password, out error);
+            if (result)
             {
-                MessageBox.Show("Registration successful!");
-                this.Close();
+                MessageBox.Show("Registration successful! Navigating to Goalsetting...");
+                Goalsetting goalForm = new Goalsetting(username);
+                goalForm.Show();
+                this.Hide();
             }
             else
             {
