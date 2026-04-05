@@ -250,14 +250,15 @@ namespace Demo1
             // 
             // lvActivities
             // 
+            this.lvActivities.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lvActivities.BackColor = System.Drawing.Color.White;
-            this.lvActivities.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lvActivities.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lvActivities.FullRowSelect = true;
             this.lvActivities.GridLines = true;
             this.lvActivities.HideSelection = false;
-            this.lvActivities.Location = new System.Drawing.Point(100, 319);
+            this.lvActivities.Location = new System.Drawing.Point(25, 340);
             this.lvActivities.Name = "lvActivities";
-            this.lvActivities.Size = new System.Drawing.Size(900, 251);
+            this.lvActivities.Size = new System.Drawing.Size(1050, 280);
             this.lvActivities.TabIndex = 6;
             this.lvActivities.UseCompatibleStateImageBehavior = false;
             this.lvActivities.View = System.Windows.Forms.View.Details;

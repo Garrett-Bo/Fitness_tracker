@@ -25,16 +25,17 @@
         private void InitializeComponent()
         {
             this.pnlHeader = new System.Windows.Forms.Panel();
+            this.btnLogout = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.lblLoggedUser = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
             this.pnlContent = new System.Windows.Forms.Panel();
+            this.lblResult = new System.Windows.Forms.Label();
             this.btnViewProgress = new System.Windows.Forms.Button();
             this.btnRecordActivity = new System.Windows.Forms.Button();
             this.btnSaveGoal = new System.Windows.Forms.Button();
             this.txtGoalCalories = new System.Windows.Forms.TextBox();
             this.lblGoalText = new System.Windows.Forms.Label();
-            this.lblResult = new System.Windows.Forms.Label();
             this.pnlHeader.SuspendLayout();
             this.pnlContent.SuspendLayout();
             this.SuspendLayout();
@@ -42,6 +43,7 @@
             // pnlHeader
             // 
             this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(152)))), ((int)(((byte)(0)))));
+            this.pnlHeader.Controls.Add(this.btnLogout);
             this.pnlHeader.Controls.Add(this.btnClose);
             this.pnlHeader.Controls.Add(this.lblLoggedUser);
             this.pnlHeader.Controls.Add(this.lblTitle);
@@ -50,6 +52,22 @@
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.Size = new System.Drawing.Size(900, 120);
             this.pnlHeader.TabIndex = 3;
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(57)))), ((int)(((byte)(53)))));
+            this.btnLogout.FlatAppearance.BorderSize = 0;
+            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogout.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnLogout.ForeColor = System.Drawing.Color.White;
+            this.btnLogout.Location = new System.Drawing.Point(754, 10);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(96, 35);
+            this.btnLogout.TabIndex = 11;
+            this.btnLogout.Text = "LOGOUT";
+            this.btnLogout.UseVisualStyleBackColor = false;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // btnClose
             // 
@@ -105,6 +123,17 @@
             this.pnlContent.Size = new System.Drawing.Size(900, 350);
             this.pnlContent.TabIndex = 4;
             this.pnlContent.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlContent_Paint);
+            // 
+            // lblResult
+            // 
+            this.lblResult.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.lblResult.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(57)))), ((int)(((byte)(53)))));
+            this.lblResult.Location = new System.Drawing.Point(70, 250);
+            this.lblResult.Name = "lblResult";
+            this.lblResult.Size = new System.Drawing.Size(760, 80);
+            this.lblResult.TabIndex = 8;
+            this.lblResult.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblResult.Visible = false;
             // 
             // btnViewProgress
             // 
@@ -173,18 +202,6 @@
             this.lblGoalText.Text = "Goal Calories (kcal):";
             this.lblGoalText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblResult
-            // 
-            this.lblResult.AutoSize = false;
-            this.lblResult.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.lblResult.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(57)))), ((int)(((byte)(53)))));
-            this.lblResult.Location = new System.Drawing.Point(70, 250);
-            this.lblResult.Name = "lblResult";
-            this.lblResult.Size = new System.Drawing.Size(760, 80);
-            this.lblResult.TabIndex = 8;
-            this.lblResult.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblResult.Visible = false;
-            // 
             // Goalsetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -218,5 +235,6 @@
         private System.Windows.Forms.Button btnViewProgress;
         private System.Windows.Forms.Label lblResult;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button btnLogout;
     }
 }

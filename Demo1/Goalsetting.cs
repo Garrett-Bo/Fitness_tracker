@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Linq;
 
 namespace Demo1
 {
@@ -112,6 +113,45 @@ namespace Demo1
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            // Close all open forms
+            foreach (System.Windows.Forms.Form form in System.Windows.Forms.Application.OpenForms.Cast<System.Windows.Forms.Form>().ToList())
+            {
+                if (form.Name != "welcomeform")
+                {
+                    form.Close();
+                }
+            }
+
+            // Show the welcome form
+            welcomeform welcomeForm = null;
+            foreach (System.Windows.Forms.Form form in System.Windows.Forms.Application.OpenForms)
+            {
+                if (form.Name == "welcomeform")
+                {
+                    welcomeForm = (welcomeform)form;
+                    break;
+                }
+            }
+
+            if (welcomeForm != null)
+            {
+                welcomeForm.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+                welcomeForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+                welcomeForm.Show();
+                welcomeForm.BringToFront();
+            }
+            else
+            {
+                // If welcome form doesn't exist, create and show it
+                welcomeForm = new welcomeform();
+                welcomeForm.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+                welcomeForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+                welcomeForm.Show();
+            }
         }
 
         private void btnViewProgress_Click(object sender, EventArgs e)
