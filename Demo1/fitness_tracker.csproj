@@ -106,6 +106,8 @@
       <DependentUpon>ActivityForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ActivityLogic.cs" />
+    <Compile Include="DatabaseManager.cs" />
+    <Compile Include="FitnessService.cs" />
     <Compile Include="Goalsetting.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,6 +132,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="RegisterLogic.cs" />
+    <Compile Include="UserRepository.cs" />
     <Compile Include="welcomeform.cs">
       <SubType>Form</SubType>
     </Compile>

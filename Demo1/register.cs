@@ -14,6 +14,8 @@ namespace Demo1
             InitializeComponent();
             _logic = new RegisterLogic(welcomeform.ConnectionString);
             btnconfirmregister.Click += btnconfirmregister_Click; // Ensure always attached
+            btnShowPassword.Click += btnShowPassword_Click;
+            btnShowConfirmPassword.Click += btnShowConfirmPassword_Click;
         }
         private void label1_Click(object sender, EventArgs e) { }
         private void register_Load(object sender, EventArgs e) { }

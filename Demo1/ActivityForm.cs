@@ -1,6 +1,5 @@
 using System;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 
 namespace Demo1
 {
@@ -9,6 +8,7 @@ namespace Demo1
         private string _username;
         private int _userId = -1;
         private ActivityLogic _logic;
+        private FitnessService _service;
         private System.Windows.Forms.Label lblResult = new System.Windows.Forms.Label();
         private Button btnGoalSetting;
 
@@ -16,7 +16,9 @@ namespace Demo1
         {
             InitializeComponent();
             _username = username;
+            // Use centralized DB manager via ActivityLogic (keeps existing constructor signature)
             _logic = new ActivityLogic(welcomeform.ConnectionString);
+            _service = new FitnessService();
             this.Load += ActivityForm_Load;
             cmbActivityType.SelectedIndexChanged += cmbActivityType_SelectedIndexChanged;
             btnSaveActivity.Click += btnSaveActivity_Click;
@@ -92,17 +94,19 @@ namespace Demo1
             if (cmbActivityType.SelectedIndex < 0)
                 return;
             string activityType = cmbActivityType.SelectedItem.ToString();
-            float metric1, metric2, metric3, duration, weight;
-            if (!float.TryParse(txtMetric1.Text, out metric1) ||
-                !float.TryParse(txtMetric2.Text, out metric2) ||
-                !float.TryParse(txtMetric3.Text, out metric3) ||
-                !float.TryParse(txtWeight.Text, out weight) ||
-                !float.TryParse(txtMetric2.Text, out duration)) // assuming metric2 is time in min
+
+            float metric1, metric2, metric3, durationHours, weight;
+            string parseError;
+
+            // Delegate parsing/validation to the service layer but preserve original messages
+            if (!_service.TryParseMetrics(txtMetric1.Text, txtMetric2.Text, txtMetric3.Text, txtWeight.Text,
+                out metric1, out metric2, out metric3, out durationHours, out weight, out parseError))
             {
-                lblResult.Text = "Please enter valid numbers for all metrics.";
+                lblResult.Text = "Please only type numbers in the activity fields.";
+                MessageBox.Show("Please only type numbers in the activity fields.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            float durationHours = duration / 60f; // convert minutes to hours
+
             string error;
             if (_logic.SaveActivity(_userId, activityType, metric1, metric2, metric3, durationHours, weight, out error))
             {
