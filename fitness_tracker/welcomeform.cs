@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
-namespace Demo1
+namespace fitness_tracker
 {
     public partial class welcomeform : Form
     {
@@ -76,6 +76,11 @@ namespace Demo1
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnlHeader_Paint(object sender, PaintEventArgs e)
         {
 
         }

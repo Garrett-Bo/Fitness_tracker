@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Demo1
+namespace fitness_tracker
 {
     internal static class Program
     {

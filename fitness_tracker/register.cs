@@ -4,7 +4,7 @@ using MySql.Data.MySqlClient;
 using System.Text.RegularExpressions;
 using System.Linq;
 
-namespace Demo1
+namespace fitness_tracker
 {
     public partial class register : Form
     {
@@ -26,28 +26,12 @@ namespace Demo1
         private void textBox3_TextChanged(object sender, EventArgs e) { }
         private bool ValidatePassword(string password)
         {
-            if (password.Length != 12)
+            bool hasUpper = false, hasLower = false, hasSpecialChar = false;
+            foreach (char c in password)
             {
-                lblPasswordError.Text = "Password must be exactly 12 characters";
-                return false;
-            }
-            bool hasUpper = false, hasLower = false, hasNumber = false;
-            for (int i = 0; i < password.Length; i++)
-            {
-                char c = password[i];
                 if (char.IsUpper(c)) hasUpper = true;
                 else if (char.IsLower(c)) hasLower = true;
-                else if (char.IsDigit(c)) hasNumber = true;
-                else if (!char.IsLetterOrDigit(c))
-                {
-                    lblPasswordError.Text = "Password can only contain letters and numbers";
-                    return false;
-                }
-                if (char.IsWhiteSpace(c))
-                {
-                    lblPasswordError.Text = "Password cannot contain spaces";
-                    return false;
-                }
+                else if (!char.IsLetterOrDigit(c)) hasSpecialChar = true;
             }
             if (!hasUpper)
             {
@@ -59,9 +43,9 @@ namespace Demo1
                 lblPasswordError.Text = "Password must contain at least one lowercase letter";
                 return false;
             }
-            if (!hasNumber)
+            if (!hasSpecialChar)
             {
-                lblPasswordError.Text = "Password must contain at least one number";
+                lblPasswordError.Text = "Password must contain at least one special character";
                 return false;
             }
             lblPasswordError.Text = "";

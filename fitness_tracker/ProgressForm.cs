@@ -4,7 +4,7 @@ using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Demo1
+namespace fitness_tracker
 {
     public partial class ProgressForm : Form
     {

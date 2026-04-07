@@ -1,7 +1,7 @@
 using System;
 using MySql.Data.MySqlClient;
 
-namespace Demo1
+namespace fitness_tracker
 {
     public class GoalResult
     {

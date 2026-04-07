@@ -1,4 +1,4 @@
-namespace Demo1
+namespace fitness_tracker
 {
     partial class login
     {

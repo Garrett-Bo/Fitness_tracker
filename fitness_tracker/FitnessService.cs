@@ -1,6 +1,6 @@
 using System;
 
-namespace Demo1
+namespace fitness_tracker
 {
     // Service layer - calculations and validations
     public class FitnessService

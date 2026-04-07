@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 
-namespace Demo1
+namespace fitness_tracker
 {
     public class ActivityLogEntry
     {

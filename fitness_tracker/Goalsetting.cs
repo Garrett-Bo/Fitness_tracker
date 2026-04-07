@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Linq;
 
-namespace Demo1
+namespace fitness_tracker
 {
     public partial class Goalsetting : Form
     {

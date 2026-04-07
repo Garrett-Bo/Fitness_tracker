@@ -1,7 +1,7 @@
 using System;
 using MySql.Data.MySqlClient;
 
-namespace Demo1
+namespace fitness_tracker
 {
     // Alternative data access class that focuses on user related queries.
     public class UserRepository

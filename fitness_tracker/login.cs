@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
-namespace Demo1
+namespace fitness_tracker
 {
     public partial class login : Form
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace Demo1
+namespace fitness_tracker
 {
     public class ActivityLogic
     {

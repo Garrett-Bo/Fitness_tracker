@@ -1,7 +1,7 @@
 using System;
 using MySql.Data.MySqlClient;
 
-namespace Demo1
+namespace fitness_tracker
 {
     // Data layer - centralized connection string and DB operations
     public class DatabaseManager

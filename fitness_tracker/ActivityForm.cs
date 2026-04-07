@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace Demo1
+namespace fitness_tracker
 {
     public partial class ActivityForm : Form
     {
